@@ -17,24 +17,30 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ggggggggggg")
+     
         // Do any additional setup after loading the view.
     }
     
 
     @IBAction func ForgetPassClicked(_ sender: UIButton) {
-           print("ggggggggggg")
-    }
+        let modalViewController = ForgotPasswordVC()
+        modalViewController.modalTransitionStyle = .crossDissolve
+        modalViewController.modalPresentationStyle = .overCurrentContext
+        present(modalViewController, animated: true, completion: nil)    }
     
     @IBAction func loginBTN(_ sender: Any) {
         activityIndecator.startAnimating()
         print("login")
         guard let email = emailTXT.text, !email.isEmpty,
-            let password = passwordTXT.text, !password.isEmpty else{return}
+            let password = passwordTXT.text, !password.isEmpty else{
+                simpleAlert(title: "error" , message: "fill all field")
+                return
+                
+        }
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
            // guard let strongSelf = self else { return }
             if let error = error{
-                print("error in signIn \(error)")
+                Auth.auth().handlFireAuthError(error: error, vc: self!)
                 self!.activityIndecator.stopAnimating()
             }else{
                 print("login succes")

@@ -14,30 +14,42 @@ class HomeVC: UIViewController {
     @IBOutlet weak var LoginOutBtn: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-     //
-        if let user = Auth.auth().currentUser {
-            print(user.uid, user.displayName)
+        //:MARK: - CKECH if User is loggin
+        if  Auth.auth().currentUser == nil {
+            Auth.auth().signInAnonymously { (result, error) in
+                if let error = error {
+                    Auth.auth().handlFireAuthError(error: error, vc: self)
+                }
+            }
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = Auth.auth().currentUser {
-            LoginOutBtn.title = "logout"
+        if let user = Auth.auth().currentUser ,!user.isAnonymous{
+            LoginOutBtn.title = "logOut"
         }else{
             LoginOutBtn.title = "logIn"
         }
     }
-    
+    //MARK: -LOGOUT
     @IBAction func LoginOutBtn(_ sender: UIBarButtonItem) {
-        if let _ = Auth.auth().currentUser {
-            // we are Login in
-            do{
-                try Auth.auth().signOut()
-                presentLoginVC()
-            }catch{print("error in login out")}
-        }else{
+        guard let user = Auth.auth().currentUser else{return}
+        if user.isAnonymous{
             presentLoginVC()
+        }else{
+            do{
+             try Auth.auth().signOut()
+                Auth.auth().signInAnonymously { (result, error) in
+                    if let error = error{
+                          Auth.auth().handlFireAuthError(error: error, vc: self)
+                    }
+                }
+             presentLoginVC()
+            }catch{
+                 Auth.auth().handlFireAuthError(error: error, vc: self)
+            }
         }
     }
+    //MARK: - present LoginVC method
     fileprivate func presentLoginVC() {
         let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "Loginvc")

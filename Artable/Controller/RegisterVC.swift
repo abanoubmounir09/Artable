@@ -48,28 +48,35 @@ class RegisterVC: UIViewController {
              cofirmpasscheckImg.image = UIImage(named: "cancel")
         }
     }
-   
+    //MARK: - REGISTER USER
     @IBAction func registerClicked(_ sender: UIButton) {
         guard let username = usernameTXT.text,!username.isEmpty,
             let email = emailTXT.text,!email.isEmpty,
         let password = passwordTXT.text, !password.isEmpty,
         let confirmpassword = confirmpaswordTXT.text,!confirmpassword.isEmpty else{
-            fatalError("error in data saving")
+            simpleAlert(title: "error", message: "fill all field")
+            return
         }
-        activityIndicator.startAnimating()
-        Auth.auth().createUser(withEmail: email, password: password) { (authresult, error) in
-            if let error = error{
-                print(error)
-                return
-            }else{
-               let uid =  authresult?.user.uid
-                print("successful created user")
-                 print("user Id is \(uid)")
-                self.activityIndicator.stopAnimating()
-                 self.dismiss(animated: true, completion: nil)
+        if confirmpassword != password{
+            simpleAlert(title: "error", message: "password dont match")
+        }else{
+            activityIndicator.startAnimating()
+            guard let authUser = Auth.auth().currentUser else{return }
+            //MARK: - Linked anonymou User with email and pass
+            let Creditial = EmailAuthProvider.credential(withEmail: email, password: password)
+            authUser.link(with: Creditial) { (result, error) in
+                if let error = error{
+                    Auth.auth().handlFireAuthError(error: error, vc: self)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }else{
+                    self.activityIndicator.stopAnimating()
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
-     
+        
+        
     }
     
     
