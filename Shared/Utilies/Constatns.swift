@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct identefiers{
+    static let CategoryCell = "CategoryCell"
+    static let ProductCell = "ProductCell"
+}
+
+struct Segues{
+    static let ToProductVC = "ToProductVC"
+    static let ToAddEditCategory = "ToAddEditCategory"
+}

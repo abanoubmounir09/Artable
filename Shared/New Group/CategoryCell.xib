@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="gTV-IL-0wX" customClass="CategoryCell" customModule="Artable" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="JHW-KO-IZE">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="163"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cat.nam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sux-zt-qpw">
+                        <rect key="frame" x="8" y="171" width="134" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="JHW-KO-IZE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GIu-Zh-kcj"/>
+                <constraint firstAttribute="bottom" secondItem="Sux-zt-qpw" secondAttribute="bottom" constant="8" id="GZv-Ya-iGM"/>
+                <constraint firstAttribute="trailing" secondItem="Sux-zt-qpw" secondAttribute="trailing" constant="8" id="frW-Y7-on9"/>
+                <constraint firstAttribute="trailing" secondItem="JHW-KO-IZE" secondAttribute="trailing" id="jXh-Nd-L2R"/>
+                <constraint firstItem="Sux-zt-qpw" firstAttribute="top" secondItem="JHW-KO-IZE" secondAttribute="bottom" constant="8" id="kJI-5D-Gfg"/>
+                <constraint firstItem="JHW-KO-IZE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="v2X-CB-LsA"/>
+                <constraint firstItem="Sux-zt-qpw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="w8d-QX-XWU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="CategoryImage" destination="JHW-KO-IZE" id="gfS-5i-7dy"/>
+                <outlet property="CategoryLbl" destination="Sux-zt-qpw" id="iVE-xB-yXE"/>
+            </connections>
+            <point key="canvasLocation" x="132.80000000000001" y="103.44827586206897"/>
+        </collectionViewCell>
+    </objects>
+</document>

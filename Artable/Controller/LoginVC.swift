@@ -23,10 +23,11 @@ class LoginVC: UIViewController {
     
 
     @IBAction func ForgetPassClicked(_ sender: UIButton) {
-        let modalViewController = ForgotPasswordVC()
-        modalViewController.modalTransitionStyle = .crossDissolve
-        modalViewController.modalPresentationStyle = .overCurrentContext
-        present(modalViewController, animated: true, completion: nil)    }
+        let vc = ForgotPasswordVC()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
     
     @IBAction func loginBTN(_ sender: Any) {
         activityIndecator.startAnimating()
@@ -50,19 +51,9 @@ class LoginVC: UIViewController {
         }
         
     }
-    
-    
-    @IBAction func GuestClicked(_ sender: UIButton) {
-        print("kjklkljkl")
-    }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func GuestClicked(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
 
 }
