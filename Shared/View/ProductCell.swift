@@ -22,7 +22,11 @@ class ProductCell: UITableViewCell {
     
     func configureCell(product:Product){
         productTitle.text = product.name
-        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let price = formatter.string(from: product.price as NSNumber){
+            roductPrice.text = price
+        }
         if let url = URL(string: product.imageUrl){
             let option:KingfisherOptionsInfo = [KingfisherOptionsInfoItem.transition(.fade(0.1))]
             productImg.kf.indicatorType = .activity

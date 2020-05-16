@@ -16,4 +16,6 @@ struct identefiers{
 struct Segues{
     static let ToProductVC = "ToProductVC"
     static let ToAddEditCategory = "ToAddEditCategory"
+    static let AdminToAddEditProduct = "ToAddEditProduct"
+    static let AdminToEditCategory = "ToEditCategory"
 }

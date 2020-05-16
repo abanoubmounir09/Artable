@@ -11,6 +11,9 @@
 		E3AF8CEF419E4EC029C4BFA6 /* Pods_Artable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852C4BBEC43B04DAD129E311 /* Pods_Artable.framework */; };
 		F2079D0024654E9600CFD8C9 /* Constatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2079CFF24654E9600CFD8C9 /* Constatns.swift */; };
 		F2079D0224655E3E00CFD8C9 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2079D0124655E3E00CFD8C9 /* RoundedButton.swift */; };
+		F2252291246D55390019D314 /* AdminProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2252290246D55390019D314 /* AdminProductVC.swift */; };
+		F2252293246D5AFC0019D314 /* AddEditProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2252292246D5AFC0019D314 /* AddEditProductsVC.swift */; };
+		F2252294246D791F0019D314 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29634DB2463EECD00981AD1 /* HomeVC.swift */; };
 		F22568B6246AA53600DF28B6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22568B5246AA53600DF28B6 /* Category.swift */; };
 		F22568B7246AA53600DF28B6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22568B5246AA53600DF28B6 /* Category.swift */; };
 		F22568BB246AA79800DF28B6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22568B9246AA79800DF28B6 /* CategoryCell.swift */; };
@@ -32,7 +35,6 @@
 		F276FF5B2469CFE8005C9EED /* Firebase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276FF592469CE9C005C9EED /* Firebase+Utils.swift */; };
 		F284531A246C209C00087651 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2845318246C209C00087651 /* ProductDetailVC.swift */; };
 		F284531B246C209C00087651 /* ProductDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2845319246C209C00087651 /* ProductDetailVC.xib */; };
-		F284531C246C38CA00087651 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29634DB2463EECD00981AD1 /* HomeVC.swift */; };
 		F284531D246C3A2900087651 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2079D0124655E3E00CFD8C9 /* RoundedButton.swift */; };
 		F284531E246C3A6400087651 /* Constatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2079CFF24654E9600CFD8C9 /* Constatns.swift */; };
 		F284531F246C3A6900087651 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276FF5024699C85005C9EED /* Extensions.swift */; };
@@ -65,6 +67,8 @@
 		A16E7CEC138D7E2C76E52B12 /* Pods-Artable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Artable.debug.xcconfig"; path = "Target Support Files/Pods-Artable/Pods-Artable.debug.xcconfig"; sourceTree = "<group>"; };
 		F2079CFF24654E9600CFD8C9 /* Constatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatns.swift; sourceTree = "<group>"; };
 		F2079D0124655E3E00CFD8C9 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		F2252290246D55390019D314 /* AdminProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductVC.swift; sourceTree = "<group>"; };
+		F2252292246D5AFC0019D314 /* AddEditProductsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditProductsVC.swift; sourceTree = "<group>"; };
 		F22568B5246AA53600DF28B6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F22568B9246AA79800DF28B6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		F22568BA246AA79800DF28B6 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CategoryCell.xib; path = "../New Group/CategoryCell.xib"; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			children = (
 				F29634F12463F02F00981AD1 /* AppDelegate.swift */,
 				F29634F32463F02F00981AD1 /* AdminHomeVC.swift */,
+				F2252290246D55390019D314 /* AdminProductVC.swift */,
+				F2252292246D5AFC0019D314 /* AddEditProductsVC.swift */,
 				F2845322246C40DF00087651 /* AddEditCategoryVC.swift */,
 			);
 			path = controller;
@@ -508,15 +514,17 @@
 				F284531D246C3A2900087651 /* RoundedButton.swift in Sources */,
 				F29634F42463F02F00981AD1 /* AdminHomeVC.swift in Sources */,
 				F29634F22463F02F00981AD1 /* AppDelegate.swift in Sources */,
-				F284531C246C38CA00087651 /* HomeVC.swift in Sources */,
 				F22568C2246AB38800DF28B6 /* ProductVCV.swift in Sources */,
 				F22568B7246AA53600DF28B6 /* Category.swift in Sources */,
 				F284531F246C3A6900087651 /* Extensions.swift in Sources */,
 				F2845323246C40DF00087651 /* AddEditCategoryVC.swift in Sources */,
 				F22568C9246AB54500DF28B6 /* ProductCell.swift in Sources */,
+				F2252294246D791F0019D314 /* HomeVC.swift in Sources */,
+				F2252291246D55390019D314 /* AdminProductVC.swift in Sources */,
 				F284531E246C3A6400087651 /* Constatns.swift in Sources */,
 				F22568BC246AA79800DF28B6 /* CategoryCell.swift in Sources */,
 				F2845320246C3A9400087651 /* ProductDetailVC.swift in Sources */,
+				F2252293246D5AFC0019D314 /* AddEditProductsVC.swift in Sources */,
 				F22568C5246AB44800DF28B6 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
