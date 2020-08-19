@@ -61,7 +61,11 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="cart" id="tJf-kc-zve"/>
-                            <barButtonItem image="empty-star" id="ive-5x-exV"/>
+                            <barButtonItem image="empty-star" id="ive-5x-exV">
+                                <connections>
+                                    <action selector="favoriteBtn:" destination="aR0-SQ-jSV" id="JMG-wC-f32"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -69,6 +73,7 @@
                         <outlet property="actvityindicator" destination="uPr-j1-nlm" id="jzO-ac-hEz"/>
                         <outlet property="collectionView" destination="mHZ-Vv-Nzv" id="nhc-Xb-HTN"/>
                         <segue destination="yDr-Gz-AsA" kind="show" identifier="ToProductVC" id="mDl-Cu-MpK"/>
+                        <segue destination="yDr-Gz-AsA" kind="show" identifier="ToFavorites" id="IwW-84-O5d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiK-lR-9hH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,4 +149,7 @@
         <image name="cart" width="64" height="64"/>
         <image name="empty-star" width="48" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="IwW-84-O5d"/>
+    </inferredMetricsTieBreakers>
 </document>

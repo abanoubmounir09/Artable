@@ -53,35 +53,16 @@ class HomeVC: UIViewController {
             }
         }
     }
-    
-//    func fetchDocument(){
-//        let docRef = db.collection("categories").document("XNiHm7rQsWNrJU3kJvre")
-//          docRef.getDocument { (snapshot, error) in
-//            guard let data = snapshot?.data() else{return}
-//            let newcategory = Category.init(data: data)
-//            self.categories.append(newcategory)
-//            self.collectionView.reloadData()
-//        }
-//    }
-    
-//    func fetchCollection(){
-//        let colRef = db.collection("categories")
-//        listener = colRef.addSnapshotListener { (snap, error) in
-//            self.categories.removeAll()
-//            guard let documents = snap?.documents else{return}
-//            for doc in documents {
-//                let data = doc.data()
-//                let newcategory = Category.init(data: data)
-//                self.categories.append(newcategory)
-//        }
-//           self.collectionView.reloadData()
-//        }
-//    }
+
     
     override func viewDidAppear(_ animated: Bool) {
          setCategoryListner()
         if let user = Auth.auth().currentUser ,!user.isAnonymous{
             LoginOutBtn.title = "logOut"
+            //print("*/*/*/*/*/*/*/*/*/\(user.uid)")
+            if UserService.userListner == nil{
+                UserService.getCurrentUser()
+            }
         }else{
             LoginOutBtn.title = "logIn"
         }
@@ -93,6 +74,7 @@ class HomeVC: UIViewController {
         collectionView.reloadData()
         
     }
+    
     
     func setCategoryListner(){
         listener = db.collection("categories").addSnapshotListener({ (snap, error) in
@@ -114,6 +96,9 @@ class HomeVC: UIViewController {
             })
         })
     }
+    @IBAction func favoriteBtn(_ sender: Any) {
+        performSegue(withIdentifier: Segues.ToFavorites, sender: self)
+    }
     
     //MARK: -LOGOUT
     @IBAction func LoginOutBtn(_ sender: UIBarButtonItem) {
@@ -123,6 +108,7 @@ class HomeVC: UIViewController {
         }else{
             do{
              try Auth.auth().signOut()
+                UserService.logOutUser()
                 Auth.auth().signInAnonymously { (result, error) in
                     if let error = error{
                           Auth.auth().handlFireAuthError(error: error, vc: self)
@@ -198,7 +184,37 @@ extension HomeVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectio
         if segue.identifier == Segues.ToProductVC{
             if let destination = segue.destination as? ProductVCV{
                 destination.category = selectedCategory
+            }else if segue.identifier == Segues.ToFavorites{
+                if let destination = segue.destination as? ProductVCV{
+                    destination.category = selectedCategory
+                    destination.showFavorite = true
+                }
             }
         }
     }
 }
+
+
+//    func fetchDocument(){
+//        let docRef = db.collection("categories").document("XNiHm7rQsWNrJU3kJvre")
+//          docRef.getDocument { (snapshot, error) in
+//            guard let data = snapshot?.data() else{return}
+//            let newcategory = Category.init(data: data)
+//            self.categories.append(newcategory)
+//            self.collectionView.reloadData()
+//        }
+//    }
+
+//    func fetchCollection(){
+//        let colRef = db.collection("categories")
+//        listener = colRef.addSnapshotListener { (snap, error) in
+//            self.categories.removeAll()
+//            guard let documents = snap?.documents else{return}
+//            for doc in documents {
+//                let data = doc.data()
+//                let newcategory = Category.init(data: data)
+//                self.categories.append(newcategory)
+//        }
+//           self.collectionView.reloadData()
+//        }
+//    }

@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import Firebase
+
 
 class RegisterVC: UIViewController {
     
@@ -19,7 +21,8 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cofirmpasscheckImg: UIImageView!
     @IBOutlet weak var passckeckImg: UIImageView!
-    
+    // variables
+    var userRef : DocumentReference!
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTXT.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
@@ -61,36 +64,56 @@ class RegisterVC: UIViewController {
             simpleAlert(title: "error", message: "password dont match")
         }else{
             activityIndicator.startAnimating()
-            guard let authUser = Auth.auth().currentUser else{return }
-            //MARK: - Linked anonymou User with email and pass
-            let Creditial = EmailAuthProvider.credential(withEmail: email, password: password)
-            authUser.link(with: Creditial) { (result, error) in
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if let error = error{
                     Auth.auth().handlFireAuthError(error: error, vc: self)
                     self.activityIndicator.stopAnimating()
                     return
-                }else{
-                    self.activityIndicator.stopAnimating()
-                    self.dismiss(animated: true, completion: nil)
                 }
+                guard let firUser = result?.user else{return}
+                let artUser = User(id: firUser.uid, email: email, userName: username, stripId: "")
+                self.createFirestoreUser(with: artUser)
+                self.activityIndicator.stopAnimating()
+                self.dismiss(animated: true, completion: nil)
             }
+           
+            
+            
+            
+//             guard let authUser = Auth.auth().currentUser else{return }
+//            //MARK: - Linked anonymou User with email and pass
+//            let Creditial = EmailAuthProvider.credential(withEmail: email, password: password)
+//            authUser.link(with: Creditial) { (result, error) in
+//                if let error = error{
+//                    Auth.auth().handlFireAuthError(error: error, vc: self)
+//                    self.activityIndicator.stopAnimating()
+//                    return
+//                }else{
+//                    guard let firuser = result?.user else{return}
+//                    let artUser = User(id: firuser.uid, email: email, userName: username, stripId: "")
+//                    //create fireStore User
+//                    self.createFirestoreUser(with: artUser)
+//                    self.activityIndicator.stopAnimating()
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+//            }
         }
-        
-        
+    }//endbtn
+    
+    func createFirestoreUser(with user:User){
+        // step 1 create referencnce
+        userRef = Firestore.firestore().collection("users").document(user.id)
+        // ste2 create user
+        let data = User.modalTodata(user: user)
+        //step 3 upload to firestore
+        userRef.setData(data) { (error) in
+           if let error = error{
+                Auth.auth().handlFireAuthError(error: error, vc: self)
+                self.activityIndicator.stopAnimating()
+                self.dismiss(animated: true, completion: nil)
+                return
+        }
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
-
-extension RegisterVC:UITextFieldDelegate{
     
-}
+}//end class

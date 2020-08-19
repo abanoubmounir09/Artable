@@ -28,6 +28,8 @@
 		F22568C9246AB54500DF28B6 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22568C6246AB54500DF28B6 /* ProductCell.swift */; };
 		F22568CA246AB54500DF28B6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22568C7246AB54500DF28B6 /* ProductCell.xib */; };
 		F22568CB246AB54500DF28B6 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22568C7246AB54500DF28B6 /* ProductCell.xib */; };
+		F272E3B4246FD9460026F045 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272E3B3246FD9460026F045 /* User.swift */; };
+		F272E3B7246FF8170026F045 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F272E3B6246FF8170026F045 /* UserService.swift */; };
 		F276FF5124699C85005C9EED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276FF5024699C85005C9EED /* Extensions.swift */; };
 		F276FF572469AF0B005C9EED /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276FF552469AF0B005C9EED /* ForgotPasswordVC.swift */; };
 		F276FF582469AF0B005C9EED /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F276FF562469AF0B005C9EED /* ForgotPasswordVC.xib */; };
@@ -76,6 +78,8 @@
 		F22568C3246AB44800DF28B6 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F22568C6246AB54500DF28B6 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		F22568C7246AB54500DF28B6 /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		F272E3B3246FD9460026F045 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F272E3B6246FF8170026F045 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		F276FF5024699C85005C9EED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F276FF552469AF0B005C9EED /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		F276FF562469AF0B005C9EED /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
@@ -172,6 +176,14 @@
 			path = XIBs;
 			sourceTree = "<group>";
 		};
+		F272E3B5246FF7F20026F045 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				F272E3B6246FF8170026F045 /* UserService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		F276FF522469AE85005C9EED /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +231,7 @@
 		F29634D82463EECD00981AD1 /* Artable */ = {
 			isa = PBXGroup;
 			children = (
+				F272E3B5246FF7F20026F045 /* services */,
 				F276FF522469AE85005C9EED /* Xibs */,
 				F296350D246451E800981AD1 /* View */,
 				F296350B2464517900981AD1 /* Controller */,
@@ -287,6 +300,7 @@
 			children = (
 				F22568B5246AA53600DF28B6 /* Category.swift */,
 				F22568C3246AB44800DF28B6 /* Product.swift */,
+				F272E3B3246FD9460026F045 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -492,7 +506,9 @@
 				F284531A246C209C00087651 /* ProductDetailVC.swift in Sources */,
 				F22568B6246AA53600DF28B6 /* Category.swift in Sources */,
 				F29634DC2463EECD00981AD1 /* HomeVC.swift in Sources */,
+				F272E3B4246FD9460026F045 /* User.swift in Sources */,
 				F22568C1246AB38800DF28B6 /* ProductVCV.swift in Sources */,
+				F272E3B7246FF8170026F045 /* UserService.swift in Sources */,
 				F2079D0224655E3E00CFD8C9 /* RoundedButton.swift in Sources */,
 				F22568C8246AB54500DF28B6 /* ProductCell.swift in Sources */,
 				F29635122464560A00981AD1 /* RegisterVC.swift in Sources */,
